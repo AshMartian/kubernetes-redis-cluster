@@ -11,7 +11,7 @@ RUN apt-get -y update \
 
 RUN apt-get install -y rubygems
 
-# Copy redis-trib.rb
+# Install Ruster
 RUN gem install ruster
 
 # Copy redis.conf, port=7000, datadir=/data/
