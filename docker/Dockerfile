@@ -9,14 +9,11 @@ RUN apt-get -y update \
   && apt-get -y autoremove \
   && apt-get -y clean
 
+RUN apt-get install -y rubygems
+
 # Copy redis-trib.rb
-RUN wget -O /usr/local/bin/redis-trib http://download.redis.io/redis-stable/src/redis-trib.rb
-RUN chmod 755 /usr/local/bin/redis-trib
+RUN gem install ruster
 
 # Copy redis.conf, port=7000, datadir=/data/
 RUN mkdir -p /redis-conf
 COPY redis.conf /redis-conf/redis.conf
-
-
-# Install ruby and ruby-bundler
-RUN apt-get install -y rubygems
